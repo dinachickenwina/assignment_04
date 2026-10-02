@@ -16,7 +16,7 @@ import pandas as pd
 
 
 def merge_employees(timesheet: pd.DataFrame, employees: pd.DataFrame) -> pd.DataFrame:
-	"""Return the timesheet with every roster column added to each row.
+   """Return the timesheet with every roster column added to each row.
 
     Given the (already cleaned) timesheet and the (already cleaned) roster,
     return one row **per timesheet row** with that employee's roster columns —
@@ -44,5 +44,5 @@ def merge_employees(timesheet: pd.DataFrame, employees: pd.DataFrame) -> pd.Data
     you can use `on=` instead of `left_on=`/`right_on=`. (`how="left"` with the
     timesheet on the left, or `how="right"` with the frames swapped, both say
     "keep the timesheet's side" — pick whichever reads best to you.)
-	"""
-	return pd.merge(timesheet, employees, on="employee_id", how="left")
+   """
+   return pd.merge(timesheet, employees, on="employee_id", how="left")
