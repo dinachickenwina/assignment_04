@@ -49,34 +49,34 @@ def parse_hours(value) -> float:
       of an hour, not 45 hours, and `test_parse_hours` will tell you.
     """
     if not isinstance(value, str):
-      if pd.isna(value):
-        return 0.0
-      try:
-        return float(value)
-      except (TypeError, ValueError):
-        return 0.0
+        if pd.isna(value):
+            return 0.0
+        try:
+            return float(value)
+        except (TypeError, ValueError):
+            return 0.0
 
     text = value.strip()
     if not text:
-      return 0.0
+        return 0.0
 
     if "h" not in text and "m" not in text:
-      try:
-        return float(text)
-      except ValueError:
-        return 0.0
+        try:
+            return float(text)
+        except ValueError:
+            return 0.0
 
     hours = 0.0
     try:
-      for word in text.split():
-        if word.endswith("h"):
-          hours += float(word[:-1])
-        elif word.endswith("m"):
-          hours += float(word[:-1]) / 60
-        else:
-          return 0.0
+        for word in text.split():
+            if word.endswith("h"):
+                hours += float(word[:-1])
+            elif word.endswith("m"):
+                hours += float(word[:-1]) / 60
+            else:
+                return 0.0
     except ValueError:
-      return 0.0
+        return 0.0
     return hours
 
 
@@ -101,18 +101,18 @@ def clean_currency(value) -> float:
       is not an accident — cleaning currency is something every pipeline does.
     """
     if not isinstance(value, str):
-      if pd.isna(value):
-        return 0.0
-      try:
-        return float(value)
-      except (TypeError, ValueError):
-        return 0.0
+        if pd.isna(value):
+            return 0.0
+        try:
+            return float(value)
+        except (TypeError, ValueError):
+            return 0.0
 
     text = value.replace("$", "").replace(",", "").strip()
     try:
-      return float(text)
+        return float(text)
     except ValueError:
-      return 0.0
+        return 0.0
 
 
 def add_hours_worked(timesheet: pd.DataFrame) -> pd.DataFrame:
